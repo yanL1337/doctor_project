@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Protector from "./Protect/Protector";
 import HomePage from "./pages/HomePage";
+import Navbar from "./components/Navbar";
 
 function App() {
   // useEffect(() => {
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
