@@ -7,14 +7,22 @@ import Dashboard from "./pages/Dashboard";
 import Protector from "./Protect/Protector";
 import HomePage from "./pages/HomePage";
 import Navbar from "./components/Navbar";
+import Doctors from "./pages/Doctors";
+import Pocketbase from "pocketbase";
 
 function App() {
-  // useEffect(() => {
-  //   fetch("https://doctorhub.pockethost.io/api/collections/doctor/records")
-  //     .then((res) => res.json())
-  //     .then((data) => console.log(data));
-  // }, []);
+  const [doctors, setDoctors] = useState();
+  const pb = new Pocketbase("https://doctorhub.pockethost.io/");
 
+  useEffect(() => {
+    pb.collection("docs")
+      .getFullList({
+        sort: "-created",
+      })
+      .then((data) => setDoctors(data));
+  }, []);
+
+  console.log(doctors);
   return (
     <BrowserRouter>
       <Navbar />
@@ -22,6 +30,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/doctors" element={<Doctors docs={doctors} />} />
         <Route element={<Protector />}>
           <Route path="/dashboard" element={<Dashboard />} />
         </Route>

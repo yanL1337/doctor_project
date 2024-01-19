@@ -1,6 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  const location = useLocation();
+  const isDoctorsPage = location.pathname === "/doctors";
+
   return (
     <header>
       <ul className="menu bg-base-200 flex-row lg:menu-horizontal rounded-box justify-center">
@@ -26,11 +29,11 @@ const Navbar = () => {
         <li>
           <Link to={"/login"}>
             Login
-            <span className="badge badge-xs badge-info"></span>
+            <span className="badge bg-primary badge-xs badge-info"></span>
           </Link>
         </li>
         <li>
-          <a>
+          <Link to={"/doctors"}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -46,9 +49,12 @@ const Navbar = () => {
               />
             </svg>
             Doctors
-            <span className="badge badge-sm badge-warning">NEW</span>
-          </a>
+            <span className=" bg-secondary badge badge-sm badge-warning">
+              NEW
+            </span>
+          </Link>
         </li>
+        {isDoctorsPage && <></>}
       </ul>
     </header>
   );

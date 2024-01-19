@@ -17,9 +17,13 @@ const LoginPage = () => {
 
   const sendData = async () => {
     setLoading(true);
-    await pb
-      .collection("docs")
-      .authWithPassword(emailRef.current.value, passRef.current.value);
+    try {
+      await pb
+        .collection("docs")
+        .authWithPassword(emailRef.current.value, passRef.current.value);
+    } catch (error) {
+      console.error("error login", error);
+    }
     setLoading(false);
     navigate("/dashboard");
 
@@ -43,16 +47,16 @@ const LoginPage = () => {
             <label className="mr-1">Sign in with</label>
             <button
               type="button"
-              className="mx-1 h-9 w-9  rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-[0_4px_9px_-4px_#3b71ca]"
+              className="mx-1 h-9 w-9  rounded-full bg-secondary hover:bg-primary text-white shadow-[0_4px_9px_-4px_#3b71ca]"
             >
               <BiLogoFacebook
                 size={20}
-                className="flex justify-center items-center w-full"
+                className="flex justify-center items-center w-full "
               />
             </button>
             <button
               type="button"
-              className="inlne-block mx-1 h-9 w-9 rounded-full bg-blue-600 hover:bg-blue-700 uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca]"
+              className="inlne-block mx-1 h-9 w-9 rounded-full bg-secondary hover:bg-primary uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca]"
             >
               <AiOutlineTwitter
                 size={20}
@@ -81,17 +85,17 @@ const LoginPage = () => {
           <div className="text-center md:text-left">
             <button
               onClick={sendData}
-              className="mt-4 bg-blue-600 hover:bg-blue-700 px-4 py-2 text-white uppercase rounded text-xs tracking-wider"
+              className="mt-4 bg-secondary hover:bg-primary px-4 py-2 text-white uppercase rounded text-xs tracking-wider"
               type="submit"
             >
               Login
             </button>
           </div>
-          <div className="mt-4 font-semibold text-sm text-slate-500 text-center md:text-left">
+          <div className="mt-4  font-semibold text-sm text-slate-500 text-center md:text-left">
             Don&apos;t have an account?
             <Link
               to={"/register"}
-              className="text-red-600 hover:underline hover:underline-offset-4"
+              className="ml-1 text-primary hover:underline hover:underline-offset-4"
               href="#"
             >
               Register
