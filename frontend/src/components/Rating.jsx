@@ -11,7 +11,7 @@ const Rating = ({ rating }) => {
   }
 
   return (
-    <div className="bg-yellow">
+    <div className="text-yellow-300">
       <p>{stars}</p>
     </div>
   );

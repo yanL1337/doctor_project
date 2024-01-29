@@ -2,10 +2,10 @@ import Rating from "./Rating";
 
 const DocCard = ({ doctor }) => {
   return (
-    <div className="card card-side image-full bg-base-300 shadow-xl">
-      <figure className="w-full p-10">
+    <div className="card card-side image-full bg-base-300 shadow-xl z-0">
+      <figure className="w-full p-20">
         <img
-          className="rounded-full w-fit h-fit"
+          className="rounded-full "
           src={`https://doctorhub.pockethost.io/api/files/${doctor.collectionId}/${doctor.id}/${doctor.avatar}`}
           alt="Movie"
         />
@@ -15,7 +15,7 @@ const DocCard = ({ doctor }) => {
         <h3 className="card-title">{doctor.fachgebiet}</h3>
         <Rating rating={doctor.rating} />
         <div className="card-actions justify-start">
-          <button className="btn btn-primary">Watch</button>
+          <button className="btn btn-secondary">Watch</button>
         </div>
       </div>
     </div>

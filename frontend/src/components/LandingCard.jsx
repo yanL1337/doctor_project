@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
+
 const LandingCard = () => {
   return (
     <div
-      className="hero min-h-screen"
+      className="hero  h-screen"
       style={{
         backgroundImage:
           "url(https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1760&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
@@ -15,7 +17,9 @@ const LandingCard = () => {
             Book your next appointment and get healthy soon. Please be kind and
             not mean.
           </p>
-          <button className="btn btn-secondary">Book Appointment</button>
+          <Link to={"/appointment"}>
+            <button className="btn btn-secondary">Book Appointment</button>
+          </Link>
         </div>
       </div>
     </div>

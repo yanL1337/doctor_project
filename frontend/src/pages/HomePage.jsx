@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 
 const HomePage = () => {
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-hidden ">
       {/* <Navbar /> */}
       <LandingCard />
       <Category />

@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
+import Search from "./Seachr";
 
-const Navbar = () => {
+const Navbar = ({ docs }) => {
   const location = useLocation();
   const isDoctorsPage = location.pathname === "/doctors";
 
@@ -27,8 +28,8 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link to={"/login"}>
-            Login
+          <Link to={"/dashboard"}>
+            Dashboard
             <span className="badge bg-primary badge-xs badge-info"></span>
           </Link>
         </li>
@@ -54,7 +55,7 @@ const Navbar = () => {
             </span>
           </Link>
         </li>
-        {isDoctorsPage && <></>}
+        {isDoctorsPage && <Search docs={docs} />}
       </ul>
     </header>
   );
